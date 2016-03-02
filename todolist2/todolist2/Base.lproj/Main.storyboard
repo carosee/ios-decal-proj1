@@ -30,7 +30,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do List" id="Asp-Zr-a6d">
-                        <barButtonItem key="leftBarButtonItem" title="Stats" id="2bP-6A-JEi"/>
+                        <barButtonItem key="leftBarButtonItem" title="Stats" id="2bP-6A-JEi">
+                            <connections>
+                                <segue destination="1EC-Fn-8xh" kind="show" identifier="showSegue" id="SsP-nc-nFB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8ni-iN-Alw">
                             <connections>
                                 <segue destination="Yqj-c1-MFh" kind="presentation" id="USx-Wy-5Ev"/>
@@ -41,6 +45,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGr-uK-sRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="794" y="-367"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6kE-Xi-Dmw">
+            <objects>
+                <viewController id="1EC-Fn-8xh" customClass="ViewController" customModule="todolist2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PBt-Ji-QCe"/>
+                        <viewControllerLayoutGuide type="bottom" id="1SW-eh-zQC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9gP-m8-sT6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlX-7E-Mp7">
+                                <rect key="frame" x="272" y="261" width="66" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Number of tasks completed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw4-JJ-SaI">
+                                <rect key="frame" x="170" y="94" width="260" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fw4-JJ-SaI" firstAttribute="centerX" secondItem="9gP-m8-sT6" secondAttribute="centerX" id="6Kn-Pl-Yni"/>
+                            <constraint firstItem="UlX-7E-Mp7" firstAttribute="centerX" secondItem="9gP-m8-sT6" secondAttribute="centerX" id="J4M-vJ-777"/>
+                            <constraint firstItem="Fw4-JJ-SaI" firstAttribute="top" secondItem="PBt-Ji-QCe" secondAttribute="bottom" constant="38" id="dUq-Hg-MTU"/>
+                            <constraint firstItem="UlX-7E-Mp7" firstAttribute="centerY" secondItem="9gP-m8-sT6" secondAttribute="centerY" id="xxr-O5-iO8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="O7d-OV-1n3"/>
+                    <connections>
+                        <outlet property="numCompleted" destination="UlX-7E-Mp7" id="5zY-jH-iMx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwr-Ab-cTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="362"/>
         </scene>
         <!--Add To Do List Item-->
         <scene sceneID="tne-QT-ifu">
@@ -123,5 +169,26 @@
             </objects>
             <point key="canvasLocation" x="1561" y="-367"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RmF-VG-DAv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TtE-Jt-NHc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcY-YQ-cie">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1EC-Fn-8xh" kind="relationship" relationship="rootViewController" id="5uZ-bx-0we"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITf-iU-Arj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="362"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SsP-nc-nFB"/>
+    </inferredMetricsTieBreakers>
 </document>

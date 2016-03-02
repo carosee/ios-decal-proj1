@@ -12,9 +12,11 @@ class ToDoListTableViewController: UITableViewController {
 
     var todoItems = [ChecklistItem]()
     var newItem:String = ""
+    //var numChecked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //numChecked = 0
         
         // todoItems = ["poop", "eat", "sleep"]
 
@@ -73,8 +75,10 @@ class ToDoListTableViewController: UITableViewController {
         
         if (isChecked) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            //numChecked++
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
+            //numChecked--
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -121,15 +125,28 @@ class ToDoListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showSegue" {
+            var checkedItems = 0
+            let vc = segue.destinationViewController as! ViewController
+            //vc.num = vc.num + numChecked
+            var newList = [ChecklistItem]()
+            for item in todoItems {
+                if item.isRecentDate() || !item.checked {
+                    newList.append(item)
+                    if item.checked {
+                        checkedItems++
+                    }
+                }
+            }
+            vc.num = checkedItems
+        }
     }
-    */
     
     @IBAction func cancel(segue:UIStoryboardSegue) {
         
@@ -137,7 +154,7 @@ class ToDoListTableViewController: UITableViewController {
     
     @IBAction func done(segue:UIStoryboardSegue) {
         let todoDetailVC = segue.sourceViewController as! TodoDetailViewController
-        let newItem : ChecklistItem = ChecklistItem(text: todoDetailVC.name, checked: false)
+        let newItem : ChecklistItem = ChecklistItem(text: todoDetailVC.name, checked: false, date: NSDate())
         todoItems.append(newItem)
         self.tableView.reloadData()
     }
