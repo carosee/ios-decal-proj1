@@ -75,6 +75,7 @@ class ToDoListTableViewController: UITableViewController {
         
         if (isChecked) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            item.updateTime()
             //numChecked++
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -145,6 +146,8 @@ class ToDoListTableViewController: UITableViewController {
                 }
             }
             vc.num = checkedItems
+            todoItems = newList
+            tableView.reloadData()
         }
     }
     

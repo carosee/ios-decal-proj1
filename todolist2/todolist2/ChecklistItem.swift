@@ -26,4 +26,8 @@ public class ChecklistItem {
         return something <= 0
     }
     
+    func updateTime() {
+        self.date = NSDate()
+    }
+    
 }
